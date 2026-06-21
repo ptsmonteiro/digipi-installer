@@ -1,0 +1,2 @@
+pi ALL=(ALL) NOPASSWD: ALL
+www-data ALL=(ALL) NOPASSWD: ALL
