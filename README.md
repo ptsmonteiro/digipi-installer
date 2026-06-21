@@ -45,7 +45,7 @@ The official DigiPi image ships **arm32 (armhf)** binaries — there's no arm64 
 ## Usage
 
 ```bash
-git clone https://github.com/<your-username>/digipi-installer.git
+git clone https://github.com/ptsmonteiro/digipi-installer.git
 cd digipi-installer
 sudo ./install.sh
 ```
