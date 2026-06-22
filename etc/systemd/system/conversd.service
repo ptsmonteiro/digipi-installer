@@ -1,0 +1,10 @@
+[Unit]
+Description=Conversd Server On %I
+After=network.target
+[Service]
+PrivateTmp=true
+Type=forking
+#ExecStart=/usr/local/sbin/conversd
+ExecStart=/usr/local/bin/conversd.sh
+[Install]
+WantedBy=multi-user.target

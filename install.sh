@@ -28,8 +28,9 @@ build_direwolf() {
   git clone https://github.com/wb2osz/direwolf.git
   cd direwolf
   mkdir build && cd build
-  cmake ..
-  make -j2
+  echo Compiling direwolf...
+  cmake .. > /dev/null
+  make -j2 > /dev/null
   make install
   cd ../..
   rm -rf direwolf
@@ -41,7 +42,12 @@ ensure_root
 # packages
 echo Installing required packages
 apt update
-apt install -y sudo git curl lighttpd php-cgi libasound2 alsa-utils ax25-tools ax25-apps libax25 libhamlib-utils flrig fldigi hamradio-files wsjtx git gcc g++ cmake make libasound2-dev libudev-dev libgps-dev gpsd gpiod libgpiod-dev wmctrl xdotool fim
+apt install -y sudo git curl lighttpd php-cgi libasound2 alsa-utils ax25-tools ax25-apps libax25 libhamlib-utils flrig fldigi hamradio-files wsjtx git gcc g++ cmake make libasound2-dev libudev-dev libgps-dev gpsd gpiod libgpiod-dev wmctrl xdotool fim python3-pil python3-numpy
+
+# PAT
+curl -L -o pat_1.0.0_linux_arm64.deb https://github.com/la5nta/pat/releases/download/v1.0.0/pat_1.0.0_linux_arm64.deb
+dpkg -i pat_1.0.0_linux_arm64.deb
+rm pat_1.0.0_linux_arm64.deb
 
 # user and group management
 useradd -m -s /bin/bash pi
@@ -98,6 +104,8 @@ echo
 echo Setting Pi home
 cp -a "$WORKDIR"/home/pi /home
 
+# overwrite home contents
+cp -a home/pi/* /home/pi
 
 # site
 echo
